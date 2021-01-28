@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 import socketIOClient from "socket.io-client/dist/socket.io";
 import {Link} from "react-router-dom";
-
-const ENDPOINT = "http://127.0.0.1:4000";
+const ENDPOINT = "https://poject-sahara-api.vercel.app/";
 
 function Home() {
 
    const [response, setResponse] = useState([]);
    const [formDataName, setFormDataName] = useState('')
    const [formDataQuote, setFormDataQuote] = useState('')
+
 
    const handleSubmit = e => {
       e.preventDefault()
@@ -19,8 +19,8 @@ function Home() {
    }
 
    const handleDelete = (e) => {
-      console.log(e.target.id);
       const socket = socketIOClient(ENDPOINT);
+      console.log(e.target.id);
       socket.emit("change deleteItem", e.target.id);
    }
 
